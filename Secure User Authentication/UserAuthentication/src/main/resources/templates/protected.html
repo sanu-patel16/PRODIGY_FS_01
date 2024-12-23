@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Your Dashboard</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        
+        body {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: #fff;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+    
+        .sidebar {
+            width: 250px;
+            background: #2C3E50;
+            color: white;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #ECF0F1;
+            margin-bottom: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 18px;
+            text-align: center;
+            font-size: 18px;
+            color: #BDC3C7;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border-bottom: 1px solid #34495E;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #2980B9;
+            color: white;
+            cursor: pointer;
+        }
+
+        
+        .main-content {
+            margin-left: 250px;
+            padding: 50px;
+            background: #ecf0f3;
+            width: 100%;
+            transition: margin-left 0.3s ease;
+        }
+
+        
+        .header {
+            background: #3498DB;
+            color: white;
+            padding: 30px;
+            font-size: 32px;
+            font-weight: bold;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+            text-align: left;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        
+        .user-info {
+            font-size: 22px;
+            color: #2C3E50;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .welcome-msg {
+            font-size: 30px;
+            font-weight: 700;
+            color: #2980B9;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 48%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid #ddd;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 24px;
+            color: #3498DB;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            font-size: 18px;
+            color: #555;
+            font-weight: 300;
+        }
+
+        
+        .logout-btn {
+            width: 100%;
+            padding: 20px;
+            background-color: #E74C3C;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout-btn:hover {
+            background-color: #C0392B;
+            transform: scale(1.05);
+        }
+
+        
+        footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #3498DB;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                padding-top: 30px;
+            }
+
+            .main-content {
+                margin-left: 200px;
+                padding: 30px;
+            }
+
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .header {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>My Dashboard</h2>
+        <ul>
+            <li>Dashboard</li>
+            <li>Settings</li>
+            <li>Reports</li>
+            <li>Messages</li>
+            <li>Notifications</li>
+            <li>Logout</li>
+        </ul>
+    </div>
+
+    
+    <div class="main-content">
+        
+        <div class="header">
+            Welcome to Your Dashboard
+        </div>
+
+        
+        <div class="user-info">
+            <p class="welcome-msg">Hello, <span th:text="${username}">Username</span>!</p>
+            <p>This is your personalized dashboard. Here, you can manage your settings and view exclusive content.</p>
+        </div>
+
+        
+        <div class="card-container">
+            <div class="card">
+                <div class="card-title">Recent Activity</div>
+                <div class="card-content">
+                    Check your recent activity, see updates, and more.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Statistics</div>
+                <div class="card-content">
+                    View important statistics and insights into your account's performance.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Notifications</div>
+                <div class="card-content">
+                    Stay up to date with the latest news and alerts regarding your account.
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Settings</div>
+                <div class="card-content">
+                    Modify your account settings, privacy options, and more.
+                </div>
+            </div>
+        </div>
+
+        
+        <form action="/logout" method="post">
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+
+        <footer>
+            <p>Need help? <a href="/contact">Contact Support</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
+
+
+
